@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import React from "react";
 import { imgData } from "../../constants/index";
-import download from '../../public/download.png'
+import download from "../../public/download.png";
 
 type Props = {
   img?: any;
@@ -17,7 +17,6 @@ type Props = {
 
 const Cart = ({ img, time, title, actor, actorImg, price }: Props) => {
   const { id } = useParams();
-  console.log(name);
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -40,7 +39,11 @@ const Cart = ({ img, time, title, actor, actorImg, price }: Props) => {
                 />
               </Link>
 
-              <h1 className="text-[20px] ml-2 my-2">{item.name}</h1>
+              <h1 className="text-[20px] ml-2 my-2 text-slate-950 backdrop-blur-sm font-medium">
+                {item.name}
+              </h1>
+                {/* <button className="bg-blue-300  p-2">Add</button> */}
+              
               <div className="mx-2 bg-slate-800 h-[1px]"></div>
               <div className="flex justify-between items-center p-4 ml-2">
                 <div className="flex justify-center items-center gap-2  relative ">

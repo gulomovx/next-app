@@ -9,7 +9,7 @@ const CartList = () => {
   return (
     <div className="my-24 w-full mx-auto mb-16      ">
       <h1 className="text-3xl font-semibold mb-4">Live Auctions</h1>
-      <div className="mb-8">
+      <div className="mb-8 ">
         <Cart />
       </div>
       {/* <div className="grid grid-cols-4 gap-4 ">

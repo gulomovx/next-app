@@ -19,16 +19,16 @@ export default function About({ main }: Props) {
           ></video>
         </div>
         <div className="">
-        <h1 className="text-6xl   md:text-7xl  font-semibold  text-slate-700 tracking-wider">
+        <h1 className="text-6xl md:text-7xl  font-extrabold   text-slate-700 tracking-wider">
             Explore
           </h1>
           
           
           {/*  */}
-          <h1 style={{fontWeight:"bolder"}} className="font-bla   text-transparent text-4xl md:text-6xl bg-clip-text bg-gradient-to-br from-orange-500 to-blue-700 ">
+          <h1 style={{fontWeight:"bolder"}} className="text-transparent text-4xl md:text-6xl bg-clip-text bg-gradient-to-br from-orange-500 to-blue-700 ">
             NFT marketplace{" "}
           </h1>
-          <p className="text-slate-600 text-[18px]">
+          <p className="text-slate-700 text-[20px] font-medium">
             One of the largest NFT marketplace around the world. Keep creating,
             sell anytime, anywhere
           </p>
