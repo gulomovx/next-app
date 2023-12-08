@@ -1,13 +1,22 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { HiMiniBars4 } from "react-icons/hi2";
 import { BsCart3 } from "react-icons/bs";
-
 // import Button from "./Button";
+import { Product } from "@/interface";
+import { useSelector } from "react-redux";
+import { useAppSelector } from "@/app/hooks";
+import { RootState } from "@/redux/store";
 
-const Navbar = () => {
+const Navbar = ({ name, image, price, id }: Product) => {
+  const { cartTotalQuantity }: any = useSelector(
+    (state: any): RootState => state.counter
+  );
+  // const  cartTotalQuantity = useSelector((store) => store)
+
   return (
     <>
       {/* <div className="max-w-7xl navbar bg-base-100 mx-auto h-20  top-0 z-[100] font mt-8">
@@ -56,7 +65,9 @@ const Navbar = () => {
         <nav className="navbar align-elements  ">
           <div className="navbar-start">
             <Link href="/">
-              <h1 className="text-3xl font-bold text-slate-700 font-mono">Rolling</h1>
+              <h1 className="text-3xl font-bold text-slate-700 font-mono">
+                Rolling
+              </h1>
             </Link>
           </div>
           <div className="navbar-center hidden md:hidden  xl:flex">
@@ -97,15 +108,17 @@ const Navbar = () => {
                   <span className="text-blue-800"> Connect Wallet</span>
                 </Link>
                 <Link href="/cart" className="btn btn-circle btn-md ml-4">
-            <div className="indicator">
-                <BsCart3 className="w-6 h-6"/>
-              <span className="badge badge-sm badge-primary indicator-item h-[20px] ">1</span>
-            </div>
-          </Link>
+                  <div className="indicator">
+                    <BsCart3 className="w-6 h-6" />
+                    <span className="badge badge-sm badge-primary indicator-item h-[20px] ">
+                      {cartTotalQuantity}
+                    </span>
+                  </div>
+                </Link>
                 {/* <Navlinks/> */}
               </ul>
             </div>
-             <div className=""></div>
+            <div className=""></div>
             <ul className=" font-semibold items-center hidden lg:flex  menu menu-horizontal gap-6">
               <Link href="/about">About</Link>
               <Link href="/">Activity</Link>
@@ -124,11 +137,13 @@ const Navbar = () => {
                 Connect Wallet
               </Link> */}
               <Link href="/cart" className="btn btn-circle btn-md ml-4">
-            <div className="indicator flex items-center">
-                <BsCart3 className="w-6 h-6"/>
-              <span className="badge badge-sm badge-primary indicator-item h-[20px] rounded-full ">1</span>
-            </div>
-          </Link>
+                <div className="indicator flex items-center">
+                  <BsCart3 className="w-6 h-6" />
+                  <span className="badge text-[15px] badge-sm badge-primary indicator-item h-[25px] w-[25px]  rounded-full ">
+                    {cartTotalQuantity}
+                  </span>
+                </div>
+              </Link>
             </ul>
           </div>
         </nav>

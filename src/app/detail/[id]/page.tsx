@@ -9,28 +9,31 @@ import { AiOutlineMinus } from "react-icons/ai";
 import "../../globals.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { AppDistach } from "@/redux/store";
-import { increment, decrement } from "../../../redux/features/postSlice";
+// import { AppDistach } from "@/redux/store";
+import { addToCart } from "../../../redux/features/postSlice";
 import { IoBagCheckOutline } from "react-icons/io5";
-
+import { Product } from "@/interface";
 
 function page() {
-  const { imgData: items } = useSelector((store) => store.counter);
+  // const { imgData: items } = useSelector((store) => store.counter);
+  const cartTotalQuantity = useSelector((store) => store);
+  console.log(cartTotalQuantity);
+
   const dispatch = useDispatch();
 
   const { id: itemId } = useParams();
-  console.log(itemId);
-  const [item, setItem] = useState();
+  // console.log(itemId);
+  const [item, setItem] = useState<Product>();
 
   useEffect(() => {
-    setItem(items && items.find((itm) => itm.id === +itemId));
+    setItem(imgData.find((itm) => itm.id === +itemId));
   }, []);
 
   return (
     <div className="max-w-7xl  mx-auto mt-16 mb-96">
       <div
         className="max-w-6xl  w-full border shadow-xl   mx-auto backdrop-blur-md p-8 bg-white/8 flex flex-col md:flex-row lg:flex-row
-       items-center  rounded-2xl  gap-16 "
+       items-center  rounded-2xl  gap-4 "
       >
         <div className="">
           {/* IMG */}
@@ -43,9 +46,9 @@ function page() {
             alt="img"
           />
         </div>
-        <div className=" backdrop-blur-md p-16  rounded-2xl shadow-">
+        <div className=" backdrop-blur-md md:p-16  rounded-2xl shadow-">
           {/* contents */}
-          <h1 className="text-4xl md:text-6xl blue  font-semibold mb-4">
+          <h1 className="text-2xl md:text-6xl blue  font-semibold mb-4">
             {item?.name}
           </h1>
 
@@ -84,8 +87,12 @@ function page() {
                 <AiOutlineMinus />
               </button>
             </div> */}
-            <button className="bg-blue-700 flex  items-center gap-2 justify-center w-full  p-2 text-white rounded-3xl">Add to cart
-            <IoBagCheckOutline size={25}/>
+            <button
+              onClick={() => dispatch(addToCart(item))}
+              className="bg-blue-700 flex  items-center gap-2 justify-center w-full  p-2 text-white rounded-3xl"
+            >
+              Add to cart
+              <IoBagCheckOutline size={25} />
             </button>
           </div>
         </div>
